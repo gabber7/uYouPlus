@@ -64,7 +64,7 @@ before-all::
 		wget "https://github.com/gabber7/uYouPlus/raw/main/com.miro.uyou_3.0.3_iphoneos-arm.deb" -O $(UYOU_DEB); \
  	fi; \
 	if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
-		ar x Tweaks/uYou/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb -C Tweaks/uYou; tar -xf Tweaks/uYou/data.tar* -C Tweaks/uYou; \
+		cd Tweaks/uYou; ar x com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb; tar -xf data.tar*; cd -; \
 		if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract uYou"; exit 1; \
 		fi; \
